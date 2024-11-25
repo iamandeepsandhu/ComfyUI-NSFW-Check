@@ -34,14 +34,19 @@ class NSFWScore:
         cuda = torch.cuda.is_available()
         classifier = pipeline("image-classification", model="Falconsai/nsfw_image_detection", device="cuda" if cuda else "cpu")
         
-        result = classifier(transform(image[0].permute(2, 0, 1)))
-        nsfw_score = 0.0
-        
-        for r in result:
-            if r["label"] == "nsfw":
-                nsfw_score = r["score"]
+        # Process batch of images
+        scores = []
+        for single_image in image:
+            result = classifier(transform(single_image.permute(2, 0, 1)))
+            nsfw_score = 0.0
+            
+            for r in result:
+                if r["label"] == "nsfw":
+                    nsfw_score = r["score"]
+            
+            scores.append(nsfw_score)
                 
-        return (nsfw_score,)
+        return (scores,)
 
 
 # A dictionary that contains all nodes you want to export with their names
