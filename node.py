@@ -31,7 +31,8 @@ class NSFWScore:
 
     def run(self, image):
         transform = T.ToPILImage()
-        classifier = pipeline("image-classification", model="Falconsai/nsfw_image_detection")
+        cuda = torch.cuda.is_available()
+        classifier = pipeline("image-classification", model="Falconsai/nsfw_image_detection", device="cuda" if cuda else "cpu")
         
         result = classifier(transform(image[0].permute(2, 0, 1)))
         nsfw_score = 0.0
