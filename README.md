@@ -1,5 +1,6 @@
 # NSFW Check for ComfyUI
-![image](https://github.com/user-attachments/assets/7467524f-06b7-403e-bd6c-6597034b82d0)
+![image](https://github.com/user-attachments/assets/a25cd166-a7ed-4d47-ac10-6100acf18cee)
+
 
 ## Project Overview
 
