@@ -1,4 +1,5 @@
-# This is an implementation of NSFW Detection for ComfyUI
+# NSFW Check for ComfyUI
+![image](https://github.com/user-attachments/assets/7467524f-06b7-403e-bd6c-6597034b82d0)
 
 ## Project Overview
 
